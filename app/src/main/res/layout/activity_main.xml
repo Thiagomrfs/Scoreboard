@@ -4,36 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/background">
 
-    <Button
-        android:id="@+id/btIniciar"
-        android:layout_width="146dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="307dp"
-        android:onClick="openConfig"
-        android:text="Jogar"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="206dp"
+        android:layout_height="207dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_back"
+        android:contentDescription="@string/desc_bola_basquete" />
 
-    <Button
-        android:id="@+id/btPreviousGame"
-        android:layout_width="146dp"
-        android:layout_height="60dp"
-        android:onClick="openPreviusGames"
-        android:text="Histórico"
+    <LinearLayout
+        android:layout_width="329dp"
+        android:layout_height="259dp"
+        android:background="@color/glass"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btNonSense"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btIniciar" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <Button
+            android:id="@+id/btIniciar"
+            android:layout_width="146dp"
+            android:layout_height="60dp"
+            android:onClick="openConfig"
+            android:text="@string/jogar_bt" />
+
+        <Button
+            android:id="@+id/btPreviousGame"
+            android:layout_width="146dp"
+            android:layout_height="60dp"
+            android:onClick="openPreviusGames"
+            android:text="@string/historico_bt" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btNonSense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:onClick="openPermission"
-        android:text="Permission"
+        android:text="@string/permissions"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/overlock_black"
+        android:lineSpacingExtra="-32sp"
+        android:rotation="-6"
+        android:text="@string/titulo"
+        android:textColor="#F6F2F2"
+        android:textSize="72sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

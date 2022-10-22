@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Esqueleto_Placar</string>
+    <string name="app_name">Score_Board</string>
+    <string name="titulo">Score\nBoard</string>
+    <string name="desc_bola_basquete">Imagem de uma bola de basquete</string>
+    <string name="jogar_bt">Jogar</string>
+    <string name="historico_bt">Histórico</string>
+    <string name="permissions">Permissions</string>
 </resources>
