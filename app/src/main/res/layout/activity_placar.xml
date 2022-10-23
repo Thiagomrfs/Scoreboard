@@ -18,26 +18,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvPlacar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="alteraPlacar"
-        android:text="0 X 0"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btSalvarPlacar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/tvNomePartida2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Partida"
         android:textSize="34sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/tvPlacar"
+        app:layout_constraintBottom_toTopOf="@+id/teamLeft"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -46,9 +33,53 @@
         android:id="@+id/btVerJogos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="lerUltimosJogos"
+        android:onClick="voltaPlacar"
         android:text="Resultado Anterior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btSalvarPlacar" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.22000003">
+
+        <TextView
+            android:id="@+id/teamLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="alteraPlacarEsquerda"
+            android:paddingStart="50dp"
+            android:paddingEnd="50dp"
+            android:text="0"
+            android:textSize="96sp" />
+
+        <TextView
+            android:id="@+id/labelVs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="vs"
+            android:textSize="48sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/teamRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="alteraPlacarDireita"
+            android:paddingStart="50dp"
+            android:paddingEnd="50dp"
+            android:text="0"
+            android:textSize="96sp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
