@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Score_Board</string>
+    <string name="app_name">Basketball Scores</string>
     <string name="titulo">Score\nBoard</string>
     <string name="desc_bola_basquete">Imagem de uma bola de basquete</string>
     <string name="jogar_bt">Jogar</string>

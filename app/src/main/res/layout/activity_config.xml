@@ -4,50 +4,118 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".ConfigActivity">
 
-    <EditText
-        android:id="@+id/editTextGameName"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
+        android:background="@color/black"
+        android:backgroundTint="@color/glass"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tvNomePartida"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Nome da Partida"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editTextGameName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/tvNomePartida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="NOVA PARTIDA"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            android:textStyle="bold" />
 
-    <Switch
-        android:id="@+id/swTimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Cronômetro"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextGameName" />
+        <TextView
+            android:id="@+id/labelNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="Nome:"
+            android:textColor="#DAFFFFFF"
+            android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/btInitGame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="openPlacar"
-        android:text="Iniciar Jogo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/swTimer" />
+        <EditText
+            android:id="@+id/gameName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:inputType="textPersonName"
+            android:text="Jogo Padrão"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#8DFFFFFF"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/labelA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="Time A:"
+            android:textColor="#DAFFFFFF"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/timeA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:inputType="textPersonName"
+            android:text="Prog Web"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#8DFFFFFF"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/labelB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="Time B:"
+            android:textColor="#DAFFFFFF"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/timeB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="-20dp"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:inputType="textPersonName"
+            android:text="Prog Mob"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#8DFFFFFF"
+            android:textSize="24sp" />
+
+        <Switch
+            android:id="@+id/swTimer"
+            android:layout_width="272dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="monospace"
+            android:scrollbarSize="4dp"
+            android:text="Cronômetro"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btInitGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF6D00"
+            android:onClick="openPlacar"
+            android:text="Iniciar Jogo"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

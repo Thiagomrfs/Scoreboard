@@ -33,15 +33,19 @@
             android:id="@+id/btIniciar"
             android:layout_width="146dp"
             android:layout_height="60dp"
+            android:backgroundTint="#FF6D00"
             android:onClick="openConfig"
-            android:text="@string/jogar_bt" />
+            android:text="@string/jogar_bt"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/btPreviousGame"
             android:layout_width="146dp"
             android:layout_height="60dp"
+            android:backgroundTint="#FF6D00"
             android:onClick="openPreviusGames"
-            android:text="@string/historico_bt" />
+            android:text="@string/historico_bt"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
     <Button
@@ -49,8 +53,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:backgroundTint="#FF6D00"
         android:onClick="openPermission"
         android:text="@string/permissions"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
