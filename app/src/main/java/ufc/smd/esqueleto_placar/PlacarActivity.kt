@@ -23,15 +23,8 @@ import java.nio.charset.StandardCharsets
 class PlacarActivity : AppCompatActivity() {
     lateinit var placar:Placar
 
-
     var timeEsquerda : Int = 0
-
     var timeDireita : Int = 0
-
-    //Array dos pontos
-    var placarPontos = arrayListOf(
-        arrayListOf(0,0)
-    )
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,34 +32,27 @@ class PlacarActivity : AppCompatActivity() {
         setContentView(R.layout.activity_placar)
         placar= getIntent().getExtras()?.getSerializable("placar") as Placar
 
-        //Mudar o nome da partida
-        val tvNomePartida=findViewById(R.id.tvNomePartida2) as TextView
+        initInterface()
+
+    }
+
+    fun initInterface(){
+        //Configura Interface
+        val tvNomePartida=findViewById(R.id.gameName) as TextView
         tvNomePartida.text=placar.nome_partida
-        ultimoJogos()
+
+        val timeA = findViewById<TextView>(R.id.timeA2)
+        timeA.text=placar.timeA
+
+        val timeB = findViewById<TextView>(R.id.timeB2)
+        timeB.text=placar.timeB
     }
 
-        //Retorna os pontos
-    fun getPontos() : ArrayList<ArrayList<Int>> {
-        return placarPontos
-    }
-
-    //Adiciona aos pontos
-    fun addPontos(ponto : ArrayList<Int>){
-        placarPontos.add(ponto)
-    }
 
     fun alteraPlacarEsquerda(v:View){
         timeEsquerda += 1
-        var ultimoPonto : ArrayList<Int> = getPontos().last()
 
-        ultimoPonto[0] += 1
-
-        //Adiciona pontuação
-        addPontos(ultimoPonto)
-
-
-        Log.v("PLACAR", ultimoPonto.toString())
-        Log.v("PLACAR", placarPontos.toString())
+        Log.v("PLACAR", "Time esquerda: ${timeEsquerda}")
 
         //Atualiza placar
         atualizaPlacar(v)
@@ -75,34 +61,33 @@ class PlacarActivity : AppCompatActivity() {
     fun alteraPlacarDireita(v:View){
         timeDireita += 1
 
-        var ultimoPonto : ArrayList<Int> = getPontos().last()
-
-        ultimoPonto[1] += 1
-
-        addPontos(ultimoPonto)
-
-
-
-        Log.v("PLACAR", ultimoPonto.toString())
-        Log.v("PLACAR", placarPontos.toString())
-
+        Log.v("PLACAR", "Time direita: ${timeDireita}")
 
         atualizaPlacar(v)
     }
 
-    fun voltaPlacar(v:View){
-        placarPontos.removeLast()
-        atualizaPlacar(v)
+    fun voltarEsquerda(v:View){
+        if(timeEsquerda >= 1){
+            timeEsquerda -= 1
+            atualizaPlacar(v)
+        }
+
+    }
+
+    fun voltarDireita(v:View){
+        if(timeDireita >= 1){
+            timeDireita -= 1
+            atualizaPlacar(v)
+        }
+
     }
 
     fun atualizaPlacar(v:View){
         val teamLeft = findViewById<TextView>(R.id.teamLeft)
-//        teamLeft.setText(timeEsquerda.toString())
-        teamLeft.setText(placarPontos.last()[0].toString())
+        teamLeft.setText(timeEsquerda.toString())
 
         val teamRight = findViewById<TextView>(R.id.teamRight)
-//        teamRight.setText(timeDireita.toString())
-        teamRight.setText(placarPontos.last()[1].toString())
+        teamRight.setText(timeDireita.toString())
 
         placar.resultado = ""+timeEsquerda+" vs "+ timeDireita
         vibrar(v)
@@ -160,33 +145,34 @@ class PlacarActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun lerUltimosJogos(v: View){
-        val sharedFilename = "PreviousGames"
-        val sp: SharedPreferences = getSharedPreferences(sharedFilename, Context.MODE_PRIVATE)
-
-        var meuObjString:String= sp.getString("match1","").toString()
-        if (meuObjString.length >=1) {
-            var dis = ByteArrayInputStream(meuObjString.toByteArray(Charsets.ISO_8859_1))
-            var oos = ObjectInputStream(dis)
-            var placarAntigo:Placar=oos.readObject() as Placar
-            Log.v("SMD26",placar.resultado)
-        }
-    }
-
-
+//    fun lerUltimosJogos(v: View){
+//        val sharedFilename = "PreviousGames"
+//        val sp: SharedPreferences = getSharedPreferences(sharedFilename, Context.MODE_PRIVATE)
+//
+//        var meuObjString:String= sp.getString("match1","").toString()
+//        if (meuObjString.length >=1) {
+//            var dis = ByteArrayInputStream(meuObjString.toByteArray(Charsets.ISO_8859_1))
+//            var oos = ObjectInputStream(dis)
+//            var placarAntigo:Placar=oos.readObject() as Placar
+//            Log.v("SMD26",placar.resultado)
+//        }
+//    }
 
 
-    fun ultimoJogos () {
-        val sharedFilename = "PreviousGames"
-        val sp:SharedPreferences = getSharedPreferences(sharedFilename,Context.MODE_PRIVATE)
-        var matchStr:String=sp.getString("match1","").toString()
-       // Log.v("PDM22", matchStr)
-        if (matchStr.length >=1){
-            var dis = ByteArrayInputStream(matchStr.toByteArray(Charsets.ISO_8859_1))
-            var oos = ObjectInputStream(dis)
-            var prevPlacar:Placar = oos.readObject() as Placar
-            Log.v("PDM22", "Jogo Salvo:"+ prevPlacar.resultado)
-        }
 
-    }
+
+//    fun ultimoJogos () {
+//        val sharedFilename = "PreviousGames"
+//        val sp:SharedPreferences = getSharedPreferences(sharedFilename,Context.MODE_PRIVATE)
+//        var matchStr:String=sp.getString("match1","").toString()
+//       // Log.v("PDM22", matchStr)
+//        if (matchStr.length >=1){
+//            var dis = ByteArrayInputStream(matchStr.toByteArray(Charsets.ISO_8859_1))
+//            var oos = ObjectInputStream(dis)
+//            var prevPlacar:Placar = oos.readObject() as Placar
+//            Log.v("PDM22", "Jogo Salvo:"+ prevPlacar.resultado)
+//        }
+//
+//    }
+
 }

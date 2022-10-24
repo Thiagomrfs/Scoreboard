@@ -10,8 +10,10 @@
         android:id="@+id/btSalvarPlacar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FF6D00"
         android:onClick="saveGame"
         android:text="Salvar Placar"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,17 +31,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btVerJogos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="voltaPlacar"
-        android:text="Resultado Anterior"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btSalvarPlacar" />
-
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -82,4 +75,26 @@
             android:text="0"
             android:textSize="96sp" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/voltarLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF6D00"
+        android:onClick="voltarEsquerda"
+        android:text="voltar"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout" />
+
+    <Button
+        android:id="@+id/voltarRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF6D00"
+        android:onClick="voltarDireita"
+        android:text="voltar"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
