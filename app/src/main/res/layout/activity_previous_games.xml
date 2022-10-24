@@ -4,20 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PreviousGamesActivity">
+    tools:context=".PreviousGamesActivity"
+    android:background="@drawable/background">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        android:layout_width="371dp"
+        android:layout_height="679dp"
+        android:background="@color/glass"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcPreviousGames"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcPreviousGames"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        </androidx.recyclerview.widget.RecyclerView>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
