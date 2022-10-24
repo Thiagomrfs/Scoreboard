@@ -44,7 +44,9 @@ class CustomAdapter(private val mList: List<Placar>) : RecyclerView.Adapter<Cust
 
         holder.lnCell.setOnClickListener{
             val duration= Snackbar.LENGTH_LONG
-            val text= placarAnterior.resultadoLongo
+            val text = placarAnterior.timeA + " vs " +
+                    placarAnterior.timeB + " às " +
+                    placarAnterior.resultadoLongo
 
             val snack= Snackbar.make(holder.lnCell,text,duration)
             snack.show()

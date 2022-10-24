@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="70dp"
     android:layout_margin="10dp"
+    android:backgroundTint="#80BCBCBC"
     app:cardElevation="6dp">
 
     <LinearLayout
@@ -15,20 +15,24 @@
 
         <ImageView
             android:id="@+id/imageview"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            app:srcCompat="@drawable/ic_action_name" />
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            app:srcCompat="@drawable/basketball_ic"
+            app:tint="#FFFFFF" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvNomePartida"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:text="Nome da Partida"
+                android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -37,6 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Resultado do Jogo"
+                android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
