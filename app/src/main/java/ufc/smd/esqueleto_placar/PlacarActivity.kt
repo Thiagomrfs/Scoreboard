@@ -3,24 +3,32 @@ package ufc.smd.esqueleto_placar
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.os.VibrationEffect
-import android.os.Vibrator
-
+import android.os.*
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.getSystemService
 import data.Placar
-import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
-import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 import java.nio.charset.StandardCharsets
+import java.util.*
+
 
 class PlacarActivity : AppCompatActivity() {
+    // coisas do timer -----------------------------------
+    var timer: CountDownTimer? = null
+    var timerView: TextView? = null
+    var timerToggle: Button? = null
+
+    var timerRodando = false
+
+    var tempoRestanteEmMilis: Long = 600000
+
+    // cabou -------------------------------------------
+
     lateinit var placar:Placar
 
     var timeEsquerda : Int = 0
@@ -30,10 +38,21 @@ class PlacarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_placar)
-        placar= getIntent().getExtras()?.getSerializable("placar") as Placar
+
+        placar = getIntent().getExtras()?.getSerializable("placar") as Placar
+
+        timerView = findViewById<TextView>(R.id.timer)
+        timerToggle = findViewById<Button>(R.id.toggle)
+
+        timerToggle?.setOnClickListener {
+            if (timerRodando) {
+                pauseTimer()
+            } else {
+                startTimer()
+            }
+        }
 
         initInterface()
-
     }
 
     fun initInterface(){
@@ -47,10 +66,11 @@ class PlacarActivity : AppCompatActivity() {
         val timeB = findViewById<TextView>(R.id.timeB2)
         timeB.text=placar.timeB
 
-        val timer = findViewById<TextView>(R.id.timer)
-
-        if (placar.has_timer == false) {
-            timer.text = ""
+        if (!placar.has_timer) {
+            timerView?.text = ""
+            timerToggle?.setVisibility(View.INVISIBLE);
+        } else {
+            updateCountDownText()
         }
     }
 
@@ -180,5 +200,36 @@ class PlacarActivity : AppCompatActivity() {
 //        }
 //
 //    }
+
+    private fun startTimer() {
+        timer = object : CountDownTimer(tempoRestanteEmMilis, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                tempoRestanteEmMilis = millisUntilFinished
+                updateCountDownText()
+            }
+
+            override fun onFinish() {
+                timerRodando = false
+                timerToggle?.text ="Rodar tempo"
+            }
+        }.start()
+
+        timerRodando = true
+        timerToggle?.text = "Parar tempo"
+    }
+
+    private fun pauseTimer() {
+        timer?.cancel()
+        timerRodando = false
+        timerToggle?.text = "Rodar tempo"
+    }
+
+    private fun updateCountDownText() {
+        val minutes = (tempoRestanteEmMilis / 1000).toInt() / 60
+        val seconds = (tempoRestanteEmMilis / 1000).toInt() % 60
+        val timeLeftFormatted: String =
+            java.lang.String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds)
+        timerView?.setText(timeLeftFormatted)
+    }
 
 }

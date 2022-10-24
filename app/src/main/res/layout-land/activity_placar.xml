@@ -173,12 +173,12 @@
                 android:layout_weight=".5" />
 
             <Button
-                android:id="@+id/stopTimer"
+                android:id="@+id/toggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#FF6D00"
-                android:text="Parar Tempo"
+                android:text="Rodar tempo"
                 android:textColor="#FFFFFF" />
         </LinearLayout>
 
