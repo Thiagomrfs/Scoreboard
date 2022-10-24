@@ -46,6 +46,12 @@ class PlacarActivity : AppCompatActivity() {
 
         val timeB = findViewById<TextView>(R.id.timeB2)
         timeB.text=placar.timeB
+
+        val timer = findViewById<TextView>(R.id.timer)
+
+        if (placar.has_timer == false) {
+            timer.text = ""
+        }
     }
 
 
