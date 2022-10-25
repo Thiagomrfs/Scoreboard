@@ -8,5 +8,6 @@ data class Placar(
     var timeB : String,
     var resultado : String,
     var resultadoLongo : String,
-    var has_timer : Boolean
+    var has_timer : Boolean,
+    var quarto_atual : Int
 ):Serializable

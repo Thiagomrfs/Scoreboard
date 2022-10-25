@@ -17,7 +17,8 @@ class ConfigActivity : AppCompatActivity() {
         "Prog Mob",
         "0x0",
         "20/05/20 10h",
-        false
+        false,
+        1
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +45,6 @@ class ConfigActivity : AppCompatActivity() {
         placar.timeB = sp.getString("timeB", "Prog Mob").toString()
 
         placar.has_timer=sp.getBoolean("has_timer",false)
-
     }
 
     fun initInterface(){
