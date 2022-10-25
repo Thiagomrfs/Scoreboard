@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.getSystemService
+import com.google.android.material.snackbar.Snackbar
 import data.Placar
 import java.io.ByteArrayOutputStream
 import java.io.ObjectOutputStream
@@ -34,6 +35,8 @@ class PlacarActivity : AppCompatActivity() {
     var timeEsquerda : Int = 0
     var timeDireita : Int = 0
 
+    var currentQuarterIndex: TextView? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +45,7 @@ class PlacarActivity : AppCompatActivity() {
         placar = getIntent().getExtras()?.getSerializable("placar") as Placar
 
         timerView = findViewById<TextView>(R.id.timer)
+        currentQuarterIndex = findViewById<TextView>(R.id.quarterIndex)
         timerToggle = findViewById<Button>(R.id.toggle)
 
         timerToggle?.setOnClickListener {
@@ -57,14 +61,14 @@ class PlacarActivity : AppCompatActivity() {
 
     fun initInterface(){
         //Configura Interface
-        val tvNomePartida=findViewById(R.id.gameName) as TextView
-        tvNomePartida.text=placar.nome_partida
+        val tvNomePartida = findViewById<TextView>(R.id.gameName)
+        tvNomePartida.text = placar.nome_partida
 
         val timeA = findViewById<TextView>(R.id.timeA2)
-        timeA.text=placar.timeA
+        timeA.text = placar.timeA
 
         val timeB = findViewById<TextView>(R.id.timeB2)
-        timeB.text=placar.timeB
+        timeB.text = placar.timeB
 
         if (!placar.has_timer) {
             timerView?.text = ""
@@ -72,6 +76,8 @@ class PlacarActivity : AppCompatActivity() {
         } else {
             updateCountDownText()
         }
+
+        currentQuarterIndex?.text = "T" + placar.quarto_atual
     }
 
 
@@ -116,24 +122,11 @@ class PlacarActivity : AppCompatActivity() {
         teamRight.setText(timeDireita.toString())
 
         placar.resultado = ""+timeEsquerda+" vs "+ timeDireita
-        vibrar(v)
+        vibrar()
     }
 
 
-
-//    fun alteraPlacar (v:View){
-//        game++
-//        if ((game % 2) != 0) {
-//            placar.resultado = ""+game+" vs "+ (game-1)
-//        }else{
-//            placar.resultado = ""+(game-1)+" vs "+ (game-1)
-//            vibrar(v)
-//        }
-//        tvResultadoJogo.text=placar.resultado
-//    }
-
-
-    fun vibrar (v:View){
+    fun vibrar (){
         val buzzer = this.getSystemService<Vibrator>()
          val pattern = longArrayOf(0, 200, 100, 300)
          buzzer?.let {
@@ -152,14 +145,14 @@ class PlacarActivity : AppCompatActivity() {
 
         val sharedFilename = "PreviousGames"
         val sp: SharedPreferences = getSharedPreferences(sharedFilename, Context.MODE_PRIVATE)
-        var edShared = sp.edit()
+        val edShared = sp.edit()
         //Salvar o número de jogos já armazenados
-        var numMatches= sp.getInt("numberMatch",0) + 1
+        val numMatches= sp.getInt("numberMatch",0) + 1
         edShared.putInt("numberMatch", numMatches)
 
         //Escrita em Bytes de Um objeto Serializável
-        var dt= ByteArrayOutputStream()
-        var oos = ObjectOutputStream(dt);
+        val dt= ByteArrayOutputStream()
+        val oos = ObjectOutputStream(dt);
         oos.writeObject(placar);
 
         //Salvar como "match"
@@ -171,37 +164,7 @@ class PlacarActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-//    fun lerUltimosJogos(v: View){
-//        val sharedFilename = "PreviousGames"
-//        val sp: SharedPreferences = getSharedPreferences(sharedFilename, Context.MODE_PRIVATE)
-//
-//        var meuObjString:String= sp.getString("match1","").toString()
-//        if (meuObjString.length >=1) {
-//            var dis = ByteArrayInputStream(meuObjString.toByteArray(Charsets.ISO_8859_1))
-//            var oos = ObjectInputStream(dis)
-//            var placarAntigo:Placar=oos.readObject() as Placar
-//            Log.v("SMD26",placar.resultado)
-//        }
-//    }
-
-
-
-
-//    fun ultimoJogos () {
-//        val sharedFilename = "PreviousGames"
-//        val sp:SharedPreferences = getSharedPreferences(sharedFilename,Context.MODE_PRIVATE)
-//        var matchStr:String=sp.getString("match1","").toString()
-//       // Log.v("PDM22", matchStr)
-//        if (matchStr.length >=1){
-//            var dis = ByteArrayInputStream(matchStr.toByteArray(Charsets.ISO_8859_1))
-//            var oos = ObjectInputStream(dis)
-//            var prevPlacar:Placar = oos.readObject() as Placar
-//            Log.v("PDM22", "Jogo Salvo:"+ prevPlacar.resultado)
-//        }
-//
-//    }
-
-    private fun startTimer() {
+    fun startTimer() {
         timer = object : CountDownTimer(tempoRestanteEmMilis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 tempoRestanteEmMilis = millisUntilFinished
@@ -211,6 +174,28 @@ class PlacarActivity : AppCompatActivity() {
             override fun onFinish() {
                 timerRodando = false
                 timerToggle?.text ="Rodar tempo"
+                tempoRestanteEmMilis = 600000
+
+                updateCountDownText()
+
+                vibrar()
+
+                if (placar.quarto_atual < 4) {
+                    placar.quarto_atual += 1
+                    currentQuarterIndex?.text = "T" + placar.quarto_atual
+
+                    val duration= Snackbar.LENGTH_SHORT
+                    val text = "Timer Finalizado! Iniciando novo quarto."
+
+                    val snack= Snackbar.make(timerView as View,text,duration)
+                    snack.show()
+                } else {
+                    val duration= Snackbar.LENGTH_SHORT
+                    val text = "Jogo finalizado!"
+
+                    val snack= Snackbar.make(timerView as View,text,duration)
+                    snack.show()
+                }
             }
         }.start()
 

@@ -34,15 +34,34 @@
                 android:text="voltar"
                 android:textColor="#FFFFFF" />
 
-            <TextView
-                android:id="@+id/timer"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:layout_weight="1"
-                android:text="00:00"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="34sp" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="00:00"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="34sp"/>
+
+                <TextView
+                    android:id="@+id/quarterIndex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/overlock"
+                    android:text="T1"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/voltarRight"
