@@ -72,12 +72,12 @@ class PlacarActivity : AppCompatActivity() {
 
         if (!placar.has_timer) {
             timerView?.text = ""
-            timerToggle?.setVisibility(View.INVISIBLE);
+            timerToggle?.visibility = View.INVISIBLE;
+            currentQuarterIndex?.visibility = View.INVISIBLE;
         } else {
             updateCountDownText()
+            currentQuarterIndex?.text = "T" + placar.quarto_atual
         }
-
-        currentQuarterIndex?.text = "T" + placar.quarto_atual
     }
 
 
@@ -116,10 +116,10 @@ class PlacarActivity : AppCompatActivity() {
 
     fun atualizaPlacar(v:View){
         val teamLeft = findViewById<TextView>(R.id.teamLeft)
-        teamLeft.setText(timeEsquerda.toString())
+        teamLeft.text = timeEsquerda.toString()
 
         val teamRight = findViewById<TextView>(R.id.teamRight)
-        teamRight.setText(timeDireita.toString())
+        teamRight.text = timeDireita.toString()
 
         placar.resultado = ""+timeEsquerda+" vs "+ timeDireita
         vibrar()
@@ -214,7 +214,7 @@ class PlacarActivity : AppCompatActivity() {
         val seconds = (tempoRestanteEmMilis / 1000).toInt() % 60
         val timeLeftFormatted: String =
             java.lang.String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds)
-        timerView?.setText(timeLeftFormatted)
+        timerView?.text = timeLeftFormatted
     }
 
 }
