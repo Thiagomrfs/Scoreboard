@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Dev/Projetos/Android/Scoreboard/app/src/main/res/layout-land/activity_main.xml" value="0.14535901926444833" />
+        <entry key="..\:/Users/aluno/AndroidStudioProjects/Scoreboard/app/src/main/res/layout-land/activity_config.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/aluno/AndroidStudioProjects/Scoreboard/app/src/main/res/layout-land/activity_main.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/aluno/AndroidStudioProjects/Scoreboard/app/src/main/res/layout-land/activity_placar.xml" value="0.30687830687830686" />
+        <entry key="..\:/Users/aluno/AndroidStudioProjects/Scoreboard/app/src/main/res/layout-land/activity_previous_games.xml" value="0.16111111111111112" />
+        <entry key="..\:/Users/aluno/AndroidStudioProjects/Scoreboard/app/src/main/res/layout/activity_config.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/aluno/AndroidStudioProjects/Scoreboard/app/src/main/res/layout/activity_main.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/aluno/AndroidStudioProjects/Scoreboard/app/src/main/res/layout/activity_permission.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/aluno/AndroidStudioProjects/Scoreboard/app/src/main/res/layout/activity_placar.xml" value="0.3625" />
+        <entry key="..\:/Users/aluno/AndroidStudioProjects/Scoreboard/app/src/main/res/layout/activity_previous_games.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/aluno/AndroidStudioProjects/Scoreboard/app/src/main/res/layout/card_previous_game.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/winds/AndroidStudioProjects/Esqueleto_Placar/app/src/main/res/layout/activity_config.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/winds/AndroidStudioProjects/Esqueleto_Placar/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/winds/AndroidStudioProjects/Esqueleto_Placar/app/src/main/res/layout/activity_permission.xml" value="0.14666666666666667" />
