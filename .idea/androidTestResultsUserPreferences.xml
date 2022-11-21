@@ -17,6 +17,33 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+        <entry key="-1026484510">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Tests" value="360" />
+                  <entry key="ZF52352MBJ" value="120" />
+                  <entry key="motorola&#10; moto g(9) play" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
+        <entry key="-835262709">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Tests" value="360" />
+                  <entry key="ZF52352MBJ" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="-484607985">
           <value>
             <AndroidTestResultsTableState>
@@ -74,6 +101,20 @@
           </value>
         </entry>
         <entry key="1414617109">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Tests" value="360" />
+                  <entry key="ZF52352MBJ" value="120" />
+                  <entry key="motorola&#10; moto g(9) play" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
+        <entry key="1545954699">
           <value>
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
